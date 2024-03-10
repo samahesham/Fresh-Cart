@@ -1,0 +1,41 @@
+<section class="w-75 mx-auto bg-main-light rounded my-4 p-3">
+  <div class="container">
+    <div class="row g-4 border-bottom pb-2" *ngFor="let order of orders">
+      <div class="col-md-12 my-2 p-5">
+        <h2 class=>Username's Order : <span  class="text-main">{{order.user.name}}</span> </h2>
+        <h4 class=>Email's Order : <span  class="text-main">{{order.user.email}}</span> </h4>
+        <h6 class=>Total Price is : <span  class="text-main">{{order.totalOrderPrice}}</span> </h6>
+        <p class=>
+          Your Shipping Details is : city <span  class="text-main"> {{order.shippingAddress.city}} </span>  ,
+          details : <span  class="text-main"> {{order.shippingAddress.details}} </span>  , Phone Number :
+         <span  class="text-main"> {{order.shippingAddress.phone}} </span> 
+        </p>
+        <p>
+          You Have Ordered
+        </p>
+
+        <div class="container">
+          <div
+            class="row border-bottom pb-2"
+            *ngFor="let cartPro of order.cartItems"
+          >
+            <div class="col-md-1">
+              <img
+                [src]="cartPro.product.imageCover"
+                [alt]="cartPro.product.title"
+                class="w-100"
+              />
+            </div>
+            <div class="col-md-11">
+              <div class="d-flex justify-content-between align-items-center">
+                <h3 class="h5">{{cartPro.product.title}}</h3>
+                <p class="text-main">Price : {{cartPro.price}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr>
+    </div>
+  </div>
+</section>

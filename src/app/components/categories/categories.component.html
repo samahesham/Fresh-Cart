@@ -1,0 +1,23 @@
+<section class="my-5">
+  <div class="">
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let category of categories">
+        <div
+          class="border category p-2 shadow"
+          role="button"
+          [routerLink]="['/category-details',category._id]"
+        >
+          <img
+            [src]="category.image"
+            [alt]="category.name"
+            height="280"
+            class="w-100"
+          />
+          <h3 class="fa-mouse-pointer text-center text-main fa-bold my-2">
+            {{category.name}}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

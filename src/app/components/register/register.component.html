@@ -1,0 +1,121 @@
+<section class="container shadow bg-main-light p-4 rounded w-75 mx-auto my-3">
+  <h1>Register Now</h1>
+  <form [formGroup]="registerForm" (ngSubmit)="handleForm()">
+    <div class="form-item my-3">
+      <label for="name">Name</label>
+      <input
+        formControlName="name"
+        id="name"
+        type="text"
+        class="form-control"
+      />
+      <div
+        class="alert alert-danger my-3"
+        *ngIf="(registerForm.get('name')?.touched || registerForm.get('name')?.value?.length>0) && registerForm.get('name')?.errors"
+      >
+        <p *ngIf="registerForm.get('name')?.getError('required')">
+          Name Is Required
+        </p>
+        <p *ngIf="registerForm.get('name')?.getError('minlength')">
+          Name Min Length is 3
+        </p>
+        <p *ngIf="registerForm.get('name')?.getError('maxlength')">
+          Name Max Length is 20
+        </p>
+      </div>
+    </div>
+    <div class="form-item my-3">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        formControlName="email"
+        type="email"
+        class="form-control"
+      />
+      <div
+        class="alert alert-danger my-3"
+        *ngIf="(registerForm.get('email')?.touched || registerForm.get('email')?.value?.length>0) && registerForm.get('email')?.errors"
+      >
+        <p *ngIf="registerForm.get('email')?.getError('required')">
+          Email Is Required
+        </p>
+        <p *ngIf="registerForm.get('email')?.getError('email')">
+          Email Is Invalid
+        </p>
+      </div>
+    </div>
+    <div class="form-item my-3">
+      <label for="password">Password</label>
+      <input
+        id="password"
+        formControlName="password"
+        type="password"
+        class="form-control"
+      />
+      <div
+        class="alert alert-danger my-3"
+        *ngIf="(registerForm.get('password')?.touched || registerForm.get('password')?.value?.length>0) && registerForm.get('password')?.errors"
+      >
+        <p *ngIf="registerForm.get('password')?.getError('required')">
+          Password Is Required
+        </p>
+        <p *ngIf="registerForm.get('password')?.getError('pattern')">
+          Password Must At Least 6 Characters
+        </p>
+      </div>
+    </div>
+    <div class="form-item my-3">
+      <label for="rePassword">rePassword</label>
+      <input
+        id="rePassword"
+        formControlName="rePassword"
+        type="password"
+        class="form-control"
+      />
+      <div
+        class="alert alert-danger my-3"
+        *ngIf="(registerForm.get('rePassword')?.touched || registerForm.get('rePassword')?.value?.length>0) && registerForm.get('rePassword')?.errors"
+      >
+        <p *ngIf="registerForm.get('rePassword')?.getError('required')">
+          RePassword Is Required
+        </p>
+        <p *ngIf="registerForm.get('rePassword')?.getError('notMatch')">
+          Password Must Match
+        </p>
+      </div>
+    </div>
+    <div class="form-item my-3">
+      <label for="phone">Phone</label>
+      <input
+        id="phone"
+        formControlName="phone"
+        type="tel"
+        class="form-control"
+      />
+      <div
+        class="alert alert-danger my-3"
+        *ngIf="(registerForm.get('phone')?.touched || registerForm.get('phone')?.value?.length>0) && registerForm.get('phone')?.errors"
+      >
+        <p *ngIf="registerForm.get('phone')?.getError('required')">
+          Phone Is Required
+        </p>
+        <p *ngIf="registerForm.get('phone')?.getError('pattern')">
+          Accept Only Egyptian Phone Numbers
+        </p>
+      </div>
+    </div>
+    <div class="clearfix d-flex justify-content-end">
+      <button
+        [disabled]="registerForm.invalid"
+        type="submit"
+        class="btn-main mt-4"
+      >
+        Register
+        <span *ngIf="isLoading"
+          ><i class="fa-solid fa-spinner fa-spin"></i
+        ></span>
+      </button>
+    </div>
+    <p *ngIf="errorMsg" class="alert alert-danger my-5 py-3">{{errorMsg}}</p>
+  </form>
+</section>

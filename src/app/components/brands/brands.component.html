@@ -1,0 +1,24 @@
+<section class="my-5">
+  <div class="">
+    <h2 class="text-center text-main fw-bold my-4">All Brands</h2>
+    <div class="row g-4">
+      <div class="col-md-3" *ngFor="let brand of brands">
+        <div
+          class="border p-2 shadow brand"
+          role="button"
+          [routerLink]="['/brand-details',brand._id]"
+        >
+          <img
+            [src]="brand.image"
+            [alt]="brand.name"
+            height="280"
+            class="w-100"
+          />
+          <h3 class="fa-mouse-pointer text-center text-main fa-bold my-2">
+            {{brand.name}}
+          </h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
